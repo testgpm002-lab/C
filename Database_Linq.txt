@@ -1,0 +1,50 @@
+Form.cs using System;
+using System.Collections.Generic; using System.ComponentModel; using System.Data;
+using System.Drawing; using System.Linq; using System.Text;
+using System.Threading.Tasks; using System.Windows.Forms; using System.Data.Linq;
+ 
+
+namespace WindowsFormsApplication3
+{
+public partial class Form1 : Form
+{
+public Form1()
+{
+InitializeComponent();
+}
+
+
+private void button1_Click(object sender, EventArgs e)
+{
+var d = new DataClasses1DataContext(); var c = new Tbl_Linq();
+c.Name = textBox1.Text;
+c.Gender = System.Convert.ToString(textBox2.Text); d.Tbl_Linqs.InsertOnSubmit(c);
+d.SubmitChanges();
+}
+
+
+private void Form1_Load(object sender, EventArgs e)
+{
+
+
+}
+}
+}
+ 
+
+
+
+App.config
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+<configSections>
+</configSections>
+<connectionStrings>
+<add name="WindowsFormsApplication3.Properties.Settings.EmpConnectionString" connectionString="Data Source=DESKTOP-RQS7QFK;Initial Catalog=Emp;Integrated
+Security=True"
+providerName="System.Data.SqlClient" />
+</connectionStrings>
+<startup>
+<supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+</startup>
+</configuration>

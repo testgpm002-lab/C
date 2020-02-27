@@ -1,0 +1,46 @@
+Source Code using System;
+using System.Collections.Generic; using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ConstructorOverloadingDemo
+{
+class BankDetails
+{
+private int customer_id; private string customer_name; private int balance;
+public BankDetails()
+{
+customer_id = 1000;
+customer_name = "Not Yet Specified"; balance = 0;
+}
+public BankDetails(int cust_id, string cust_name, int bal)
+{
+this.customer_id = cust_id; this.customer_name = cust_name; this.balance = bal;
+
+}
+ 
+public BankDetails(BankDetails b)
+{
+customer_id = b.customer_id; customer_name = b.customer_name; balance = b.balance;
+
+}
+public void ShowData()
+{
+Console.WriteLine("customer id={0}, customer name={1}, Bank Balance={2}", customer_id, customer_name, balance);
+
+
+}
+}
+class Program
+{
+static void Main(string[] args)
+{
+BankDetails a = new BankDetails();
+BankDetails p = new BankDetails(101, "Komal", 6000); BankDetails c = new BankDetails(p);
+a.ShowData();
+p.ShowData();
+c.ShowData(); Console.ReadLine();
+}
+}
+}

@@ -1,0 +1,85 @@
+Webform1.aspx
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication10.WebForm1" %>
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+Name :<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+<br />
+ 
+Gender : <asp:RadioButton ID="RadioButton1" Text="Male" runat="server" GroupName="gender" />
+<asp:RadioButton ID="RadioButton2" Text="Female" runat="server" GroupName="gender" />
+<br />
+<asp:Button ID="Button1" runat="server" Text="Insert" OnClick="Button1_Click" />
+</div>
+</form>
+</body>
+</html>
+
+
+Webform.aspx.cs
+
+
+using System;
+using System.Collections.Generic; using System.Linq;
+using System.Web; using System.Web.UI;
+using System.Web.UI.WebControls; using System.Data;
+using System.Configuration; using System.Data.SqlClient;
+
+namespace WebApplication10
+{
+public partial class WebForm1 : System.Web.UI.Page
+{
+protected void Page_Load(object sender, EventArgs e)
+{
+
+
+}
+ 
+protected void Button1_Click(object sender, EventArgs e)
+{
+string gender = string.Empty; if(RadioButton1.Checked)
+{
+gender = "M";
+}
+else
+{
+gender = "F";
+}
+string mainconn= ConfigurationManager.ConnectionStrings["Mycon"].ConnectionString; SqlConnection sqlconn= new SqlConnection(mainconn);
+string sqlquery="Insert Into [dbo].[Emp] (EmpName, Gender) Values(@EmpName, @Gender)"; SqlCommand sqlcomm= new SqlCommand(sqlquery,sqlconn); sqlcomm.Parameters.AddWithValue("@EmpName", TextBox1.Text); sqlcomm.Parameters.AddWithValue("@Gender", gender);
+sqlconn.Open(); sqlcomm.ExecuteNonQuery(); sqlconn.Close();
+}
+}
+}
+ 
+Web.config
+<?xml version="1.0"?>
+
+
+<!--
+For more information on how to configure your ASP.NET application, please visit http://go.microsoft.com/fwlink/?LinkId=169433
+-->
+
+
+<configuration>
+<connectionStrings>
+<add name="Mycon" connectionString="Data Source=DESKTOP-RQS7QFK;Initial Catalog=Emp;Integrated Security=True" providerName="System.Data.sqlclient"/>
+</connectionStrings>
+<system.web>
+<compilation debug="true" targetFramework="4.5" />
+<httpRuntime targetFramework="4.5" />
+</system.web>
+
+
+</configuration>

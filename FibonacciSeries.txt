@@ -1,0 +1,19 @@
+Source Code:
+
+
+using System;
+using System.Collections.Generic; using System.Linq; using System.Text;
+using System.Threading.Tasks; namespace Fibonacci
+{
+class Program
+{
+static void Main(string[] args)
+{
+int i = 0, count, f1 = 0, f2 = 1, f3 = 0; Console.Write("Enter the limit:"); count = int.Parse(Console.ReadLine()); Console.Write(f1 + ""); Console.Write(f2 + "");
+do
+{
+f3 = f1 + f2; Console.Write(" " + f3); f1 = f2; f2 = f3; i++;
+} while (i <= count); Console.ReadLine();
+}
+}
+}

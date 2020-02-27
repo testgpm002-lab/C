@@ -1,0 +1,117 @@
+WebForm1.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication47.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        User Name:<asp:TextBox ID="txtusername" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        Password:<asp:TextBox ID="txtpwd" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="Button" runat="server" OnClick="Button_Click" Text="Submit" />
+    </div>
+        <p>
+            &nbsp;</p>
+    </form>
+</body>
+</html>
+
+_____________________________________________________________________
+
+
+WebForm1.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication47
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button_Click(object sender, EventArgs e)
+        {
+            Session["UserName"] = txtusername.Text;
+            Session["Pwd"] = txtpwd.Text;
+            Response.Redirect("WebForm2.aspx");
+        }
+    }
+}
+
+_____________________________________________________________________
+
+
+WebForm2.aspx
+
+<%@Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication47.WebForm2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    User Name:<asp:TextBox ID="txtUserName1" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        Password:<asp:TextBox ID="txtpwd1" runat="server" OnTextChanged="txtpwd1_TextChanged"></asp:TextBox>
+        <br />
+
+    </div>
+    </form>
+</body>
+</html>
+
+_____________________________________________________________________
+
+
+WebForm2.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication47
+{
+    public partial class WebForm2 : System.Web.UI.Page
+    {
+        protected void page_load(object sender, EventArgs e)
+        {
+            if (Session["UserName"] != null)
+            {
+                txtUserName1.Text = Session["UserName"].ToString();
+            }
+            if (Session["Pwd"] != null)
+            {
+                txtpwd1.Text = Session["Pwd"].ToString();
+            }
+        }
+
+        protected void txtpwd1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

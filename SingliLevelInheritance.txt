@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic; using System.Linq; using System.Text;
+using System.Threading.Tasks;
+
+
+namespace third
+{
+public class Animal
+{
+public void like()
+{
+Console.WriteLine("Like milk...");
+}
+}
+public class Cat: Animal
+{
+public void type()
+{
+Console.WriteLine("Domestic Animal");
+}
+
+
+}
+class InheritenceDemo2
+{
+
+
+static void Main(string[] args)
+{
+ 
+Cat c1 = new Cat();
+
+
+c1.like();
+c1.type(); Console.ReadLine();
+}
+}
+} 

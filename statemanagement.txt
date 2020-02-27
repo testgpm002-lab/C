@@ -1,0 +1,53 @@
+Webform1.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication16.WebForm1" %>
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body runat="server" id="BodyTag">
+<form id="form1" runat="server">
+<div>
+
+
+<asp:DropDownList ID="ColorSelector" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ColorSelector_IndexChanged">
+<asp:ListItem>Pink</asp:ListItem>
+<asp:ListItem>Green</asp:ListItem>
+<asp:ListItem>Red</asp:ListItem>
+</asp:DropDownList>
+
+
+</div>
+</form>
+</body>
+ 
+</html>
+
+
+
+
+Webform1.aspx.cs using System;
+using System.Collections.Generic; using System.Linq;
+using System.Web; using System.Web.UI;
+using System.Web.UI.WebControls;
+
+
+namespace WebApplication16
+{
+public partial class WebForm1 : System.Web.UI.Page
+{
+protected void Page_Load(object sender, EventArgs e)
+{
+
+
+}
+protected void ColorSelector_IndexChanged(Object sender, EventArgs e)
+{
+BodyTag.Style["background-color"] = ColorSelector.SelectedValue; HttpCookie cookie = new HttpCookie("BackgroundColor"); cookie.Value=ColorSelector.SelectedValue; cookie.Expires=DateTime.Now.AddHours(1); Response.SetCookie(cookie);
+}
+}
+}

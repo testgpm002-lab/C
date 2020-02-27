@@ -1,0 +1,99 @@
+Web.config
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+For more information on how to configure your ASP.NET application, please visit http://go.microsoft.com/fwlink/?LinkId=169433
+-->
+<configuration>
+<system.web>
+<sessionState mode="InProc" timeout="20" cookieless="false"></sessionState>
+<compilation debug="true" targetFramework="4.5" />
+<httpRuntime targetFramework="4.5" />
+</system.web>
+</configuration>
+
+
+
+
+Global.asax.cs
+
+
+using System;
+using System.Collections.Generic; using System.Linq;
+using System.Web;
+using System.Web.Security; using System.Web.SessionState;
+
+namespace WebApplication19
+ 
+{
+public class Global : System.Web.HttpApplication
+{
+
+
+protected void Application_Start(object sender, EventArgs e)
+{
+Application["user"] = 0;
+}
+
+
+protected void Session_Start(object sender, EventArgs e)
+{
+Application.Lock();
+Application["user"] = (int)Application["user"] + 1; Application.UnLock();
+}
+
+
+protected void Application_BeginRequest(object sender, EventArgs e)
+{
+
+
+}
+
+
+protected void Application_AuthenticateRequest(object sender, EventArgs e)
+{
+
+
+}
+
+
+protected void Application_Error(object sender, EventArgs e)
+{
+
+
+}
+ 
+
+protected void Session_End(object sender, EventArgs e)
+{
+Application.Lock();
+Application["user"] = (int)Application["user"] - 1; Application.UnLock();
+}
+
+
+protected void Application_End(object sender, EventArgs e)
+{
+
+
+}
+}
+}
+Webform1.aspx.cs using System;
+using System.Collections.Generic; using System.Linq;
+using System.Web; using System.Web.UI;
+using System.Web.UI.WebControls;
+
+
+namespace WebApplication19
+{
+public partial class WebForm1 : System.Web.UI.Page
+{
+protected void Page_Load(object sender, EventArgs e)
+{
+Response.Write("The number of online users:" + Application["user"].ToString());
+}
+ 
+}
+}
+

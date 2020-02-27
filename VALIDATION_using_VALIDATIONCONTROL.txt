@@ -1,0 +1,30 @@
+Webform1.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication29.WebForm1" %>
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body style="font-family:Arial;font-size:10pt">
+<form id="form1" runat="server"> Name:(Required)<br />
+<asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+<asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="Validators" Display="Dynamic" ControlToValidate="txtName" runat="server" ErrorMessage="Name is required"></asp:RequiredFieldValidator>
+<hr /> Email:(Required)<br />
+<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+<asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="Validators" Display="Dynamic" ControlToValidate="txtEmail" runat="server" ErrorMessage="Email is required"></asp:RequiredFieldValidator>
+ 
+<br />
+Age:(Required 18-45)<br />
+<asp:TextBox ID="txtAge" runat="server"></asp:TextBox>
+<asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="Validators" Display="Dynamic" ControlToValidate="txtAge" runat="server" ErrorMessage="age is required"></asp:RequiredFieldValidator>
+<asp:RangeValidator ID="RangeValidator1" CssClass="Validators" Display="Dynamic" MinimumValue="18" MaximumValue="45" Type="Integer" ControlToValidate="txtAge" runat="server" ErrorMessage="Age range 18 to 45"></asp:RangeValidator>
+<br />
+<br />
+<asp:Button ID="Button1" runat="server" Text="Submit" />
+</form>
+</body>
+</html> 

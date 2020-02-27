@@ -1,0 +1,23 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication3.WebForm1" %>
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+user Name<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+</br>
+Password<input id="Password1" type="password" />
+</br>
+<asp:Button ID="Button1" runat="server" Text="Submit" />
+<asp:Button ID="Button2" runat="server" Text="Restore" />
+</div>
+</form>
+</body>
+</html>

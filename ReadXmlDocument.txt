@@ -1,0 +1,56 @@
+Program.cs using System;
+using System.Collections.Generic; using System.Linq;
+using System.Text;
+using System.Threading.Tasks; using System.Xml;
+
+
+
+namespace ConsoleApplication5
+{
+class Program
+{
+public static void Main ()
+{
+XmlTextWriter writer = new XmlTextWriter("Bookdata.xml", null); writer.WriteStartElement("Books"); writer.WriteElementString("id", "01"); writer.WriteElementString("title", "introduction to C"); writer.WriteElementString("price", "450");
+
+writer.WriteElementString("id", "02"); writer.WriteElementString("title", "System Programming"); writer.WriteElementString("price", "350");
+
+writer.WriteElementString("id", "03"); writer.WriteElementString("title", "DOT.NET");
+ 
+writer.WriteElementString("price", "500");
+
+
+writer.WriteEndElement(); writer.Close(); Console.ReadLine();
+}
+}
+}
+
+
+
+
+Class.cs using System;
+using System.Collections.Generic; using System.Linq;
+using System.Text;
+using System.Threading.Tasks; using System.Xml;
+
+namespace ConsoleApplication5
+{
+class Class1
+{
+public static void Main()
+{
+try
+{
+String out1 = "";
+String format = "XmlNodeType::{0,-12}{1,-10}{2}"; XmlTextReader xmlreader = new XmlTextReader("Bookdata.xml"); while(xmlreader.Read())
+ 
+{
+out1 = String.Format(format, (xmlreader.NodeType), xmlreader.Name, xmlreader.Value); Console.WriteLine(out1);
+}
+}
+catch(Exception ex)
+{
+Console.WriteLine(ex.Message);
+}
+Console.ReadLine();
+}}} 
